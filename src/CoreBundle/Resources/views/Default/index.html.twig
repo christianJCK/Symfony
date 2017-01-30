@@ -1,0 +1,35 @@
+{% extends 'CoreBundle::layout.html.twig' %}
+
+
+        {% block title %}
+            Accueil - {{ parent() }}
+        {% endblock %}
+
+{% block mainTitle %}
+Bienvenue sur mon site !
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div id="menu" class="col-md-12">
+
+            <h1>Dernières annonces sur la plateforme</h1>
+            <hr>
+            <ul>
+                {% for advert in listAdverts %}
+                    <li><a href="{{ path('oc_platform_view', {'id': advert.id}) }}">
+                            {{ advert.content }}
+                        </a>
+                        Par {{ advert.author }}
+                        Le {{ advert.date|date('d/m/Y') }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div id="content" class="col-md-9">
+
+        </div>
+    </div>
+
+{% endblock %}
